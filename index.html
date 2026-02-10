@@ -25,9 +25,19 @@
   </div>
 
   <script>
-    function yesClicked() {
-      document.getElementById("message").style.display = "block";
-      startHearts();
+  function yesClicked() {
+    document.getElementById("message").style.display = "block";
+    startHearts();
+
+    const phoneNumber = "+917397222525"; // <-- YOUR number
+    const message = encodeURIComponent(
+      "She said YES 💖🥹\nI’m your Valentine now 💕"
+    );
+
+    setTimeout(() => {
+      window.location.href = `https://wa.me/${phoneNumber}?text=${message}`;
+    }, 1200);
+  }
     }
 
     function moveNo() {
