@@ -1,64 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap');
+
 body {
   margin: 0;
   height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #ffd1dc, #ff8fab, #ff5d8f);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
+/* Glowing blur background */
+.bg-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.25);
+  filter: blur(120px);
+  border-radius: 50%;
+  top: 20%;
+  left: 30%;
+  z-index: 0;
+}
+
+/* Main card */
 .box {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 35px 28px;
+  border-radius: 24px;
   text-align: center;
-  width: 320px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  width: 340px;
+  box-shadow: 0 25px 60px rgba(230, 57, 115, 0.35);
   animation: pop 1s ease;
+  backdrop-filter: blur(6px);
 }
 
 h1 {
-  color: #e63973;
-  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  color: #c9184a;
+  margin-bottom: 8px;
 }
 
+.subtitle {
+  font-size: 14px;
+  color: #7a1c3b;
+  margin-bottom: 22px;
+}
+
+/* Buttons */
 .buttons {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   justify-content: space-around;
 }
 
 button {
-  padding: 12px 22px;
+  padding: 12px 26px;
   border: none;
   border-radius: 30px;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* YES button */
 #yesBtn {
-  background: #e63973;
+  background: linear-gradient(135deg, #ff4d6d, #ff85a1);
   color: white;
+  box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
 }
 
+#yesBtn:hover {
+  transform: scale(1.08);
+}
+
+/* NO button */
 #noBtn {
-  background: #ddd;
+  background: #f1f1f1;
+  color: #555;
 }
 
+/* Message */
 #message {
-  margin-top: 20px;
+  margin-top: 22px;
   font-size: 18px;
-  color: #e63973;
+  color: #c9184a;
   display: none;
+  animation: fadeIn 0.8s ease;
 }
 
 /* Animations */
 @keyframes pop {
   from {
-    transform: scale(0.8);
+    transform: scale(0.85);
     opacity: 0;
   }
   to {
@@ -67,21 +104,32 @@ button {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Floating hearts */
 .heart {
   position: absolute;
-  bottom: -20px;
-  font-size: 20px;
-  animation: float 6s linear;
+  bottom: -30px;
+  animation: float 7s linear;
+  pointer-events: none;
 }
 
 @keyframes float {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.8);
     opacity: 1;
   }
   100% {
-    transform: translateY(-100vh);
+    transform: translateY(-110vh) scale(1.2);
     opacity: 0;
   }
 }
