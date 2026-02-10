@@ -47,22 +47,33 @@
   </div>
 
   <script>
-    function yesClicked() {
-      document.getElementById("message").style.display = "block";
-      startHearts();
 
-      const phoneNumber = "917397222525"; // ✅ correct format
-      const message = encodeURIComponent(
-        "Alright😏\nI'll be your Valentine 💕"
-      );
+  function yesClicked() {
+    document.getElementById("message").style.display = "block";
+    startHearts();
 
-      setTimeout(() => {
-        window.open(
-          `https://wa.me/${phoneNumber}?text=${message}`,
-          "_blank"
-        );
-      }, 800);
+    // Make the cat happy
+    const cat = document.querySelector(".cat");
+    if (cat) {
+      cat.style.animation = "happyJump 0.6s ease infinite";
     }
+
+    // YOUR WhatsApp number (country code, no +, no spaces)
+    const phoneNumber = "917397222525";
+
+    // Message she will send you
+    const message = encodeURIComponent(
+      "She clicked YES 💖🥹\nYou are officially her Valentine 💕"
+    );
+
+    // Open WhatsApp after a short delay
+    setTimeout(() => {
+      window.open(
+        `https://wa.me/${phoneNumber}?text=${message}`,
+        "_blank"
+      );
+    }, 900);
+  }
 
     function moveNo() {
       const btn = document.getElementById("noBtn");
