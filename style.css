@@ -133,3 +133,23 @@ button {
     opacity: 0;
   }
 }
+
+/* Cute interactive cat */
+.cat {
+  width: 140px;
+  margin: 12px auto 6px;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  animation: idleBounce 3s ease-in-out infinite;
+}
+
+.cat:hover {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+/* Idle cute bounce */
+@keyframes idleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
