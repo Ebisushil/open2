@@ -4,20 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Force neutral preview -->
+  <!-- Neutral preview (WhatsApp / IG / iMessage) -->
   <meta property="og:title" content="Open link" />
   <meta property="og:description" content="Tap to view content" />
   <meta property="og:image" content="https://dummyimage.com/1200x630/f2f2f2/f2f2f2.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ebisushil.github.io/open2/" />
 
-  <!-- Also neutralize Twitter/X previews -->
+  <!-- Twitter/X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Open link">
   <meta name="twitter:description" content="Tap to view content">
   <meta name="twitter:image" content="https://dummyimage.com/1200x630/f2f2f2/f2f2f2.png">
 
-  <!-- IMPORTANT: neutral title -->
   <title>Open link</title>
 
   <link rel="stylesheet" href="style.css">
@@ -26,13 +25,14 @@
 <body>
 
   <div class="box">
-    
+
+    <!-- Cute interactive cat -->
     <img
-  src="https://i.imgur.com/9bK0F9m.png"
-  alt="Cute cat"
-  class="cat"
-/>
-    
+      src="https://i.imgur.com/9bK0F9m.png"
+      alt="Cute cat"
+      class="cat"
+    />
+
     <h1>Will you be my Valentine? 💖</h1>
 
     <div class="buttons">
@@ -47,33 +47,31 @@
   </div>
 
   <script>
+    function yesClicked() {
+      document.getElementById("message").style.display = "block";
+      startHearts();
 
-  function yesClicked() {
-    document.getElementById("message").style.display = "block";
-    startHearts();
+      // Make the cat happy
+      const cat = document.querySelector(".cat");
+      if (cat) {
+        cat.style.animation = "happyJump 0.6s ease infinite";
+      }
 
-    // Make the cat happy
-    const cat = document.querySelector(".cat");
-    if (cat) {
-      cat.style.animation = "happyJump 0.6s ease infinite";
-    }
+      // YOUR WhatsApp number (country code, no +, no spaces)
+      const phoneNumber = "917397222525";
 
-    // YOUR WhatsApp number (country code, no +, no spaces)
-    const phoneNumber = "917397222525";
-
-    // Message she will send you
-    const message = encodeURIComponent(
-      "She clicked YES 💖🥹\nYou are officially her Valentine 💕"
-    );
-
-    // Open WhatsApp after a short delay
-    setTimeout(() => {
-      window.open(
-        `https://wa.me/${phoneNumber}?text=${message}`,
-        "_blank"
+      const message = encodeURIComponent(
+        "She clicked YES 💖🥹\nYou are officially her Valentine 💕"
       );
-    }, 900);
-  }
+
+      // Open WhatsApp (user gesture safe)
+      setTimeout(() => {
+        window.open(
+          `https://wa.me/${phoneNumber}?text=${message}`,
+          "_blank"
+        );
+      }, 800);
+    }
 
     function moveNo() {
       const btn = document.getElementById("noBtn");
@@ -92,7 +90,6 @@
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.fontSize = (16 + Math.random() * 20) + "px";
         document.body.appendChild(heart);
-
         setTimeout(() => heart.remove(), 6000);
       }, 300);
     }
